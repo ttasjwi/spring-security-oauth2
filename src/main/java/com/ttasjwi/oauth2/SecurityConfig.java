@@ -12,9 +12,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests().anyRequest().authenticated();
 
-        // 여러개의 DefaultAuthenticationEntryPoint -> 상황에 맞는 것 사용
         http.httpBasic();
         http.formLogin();
+        // 커스텀 AuthenticationEntryPoint 지정 -> 가장 우선시 된다.
+        http.exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+
         return http.build();
     }
 }
