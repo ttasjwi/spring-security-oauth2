@@ -11,7 +11,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests().anyRequest().authenticated();
-        http.httpBasic(); // httpBasic -> BasicAuthenticationEntryPoint 등록
+        http.formLogin(); // Form 인증 -> LoginUrlAuthenticationEntryPoint 등록
         return http.build();
     }
 }
