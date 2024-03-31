@@ -6,14 +6,9 @@
 
 ---
 
-# Spring Security Fundamentals
-- 초기화 과정 이해 - 프로젝트 생성 / 의존성 추가
-- 초기화 과정 이해 - SecurityBuilder / SecurityConfigurer
-- 자동 설정에 의한 초기화 이해
-- AuthenticationEntryPoint 이해
-- 시큐리티 인증 및 인가 흐름
-- Http Basic 인증
-- Cors 이해
+<h2 id="fundamentals">Spring Securiry 기초</h2>
+
+- <a href="/note/fundamentals/초기화 과정 이해 - 프로젝트 생성 & 의존성 추가.md" target="_blank">초기화 과정 이해 - 프로젝트 생성 & 의존성 추가</a>
 
 ---
 
