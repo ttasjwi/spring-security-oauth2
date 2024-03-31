@@ -9,6 +9,7 @@
 <h2 id="fundamentals">Spring Securiry 기초</h2>
 
 - <a href="/note/fundamentals/초기화 과정 이해 - 프로젝트 생성 & 의존성 추가.md" target="_blank">초기화 과정 이해 - 프로젝트 생성 & 의존성 추가</a>
+- <a href="/note/fundamentals/초기화 과정 이해 - SecurityBuilder & SecurityConfigurer.md" target="_blank">초기화 과정 이해 - SecurityBuilder & SecurityConfigurer</a>
 
 ---
 
