@@ -1,31 +1,51 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.2.5"
-    id("io.spring.dependency-management") version "1.1.4"
-    kotlin("jvm") version "1.9.23"
-    kotlin("plugin.spring") version "1.9.23"
+    id(Plugins.SPRING_BOOT) version PluginVersions.SPRING_BOOT_VERSION apply false
+    id(Plugins.SPRING_DEPENDENCY_MANAGEMENT) version PluginVersions.DEPENDENCY_MANAGER_VERSION
+    id(Plugins.KOTLIN_JVM) version PluginVersions.JVM_VERSION
+    id(Plugins.KOTLIN_SPRING) version PluginVersions.SPRING_PLUGIN_VERSION apply false
 }
-
-group = "com.ttasjwi"
-version = "0.0.1-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
 }
 
-repositories {
-    mavenCentral()
+allprojects {
+    group = "com.security"
+    version = "0.0.1-SNAPSHOT"
+
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.security:spring-security-test")
+subprojects {
+    apply { plugin(Plugins.KOTLIN_JVM) }
+    apply { plugin(Plugins.KOTLIN_SPRING) }
+    apply { plugin(Plugins.SPRING_BOOT) }
+    apply { plugin(Plugins.SPRING_DEPENDENCY_MANAGEMENT) }
+
+
+    dependencies {
+        // kotlin
+        implementation(Dependencies.KOTLIN_REFLECT)
+        implementation(Dependencies.KOTLIN_JACKSON)
+
+        // test
+        testImplementation(Dependencies.SPRING_TEST)
+    }
+
+    tasks.getByName("bootJar") {
+        enabled = false
+    }
+
+    tasks.getByName("jar") {
+        enabled = true
+    }
+
 }
+
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {

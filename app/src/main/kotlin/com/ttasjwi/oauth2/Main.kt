@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SpringSecurityOauth2Application
+class Main
 
 fun main(args: Array<String>) {
-    runApplication<SpringSecurityOauth2Application>(*args)
+    runApplication<Main>(*args)
 }
