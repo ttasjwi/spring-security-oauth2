@@ -11,7 +11,7 @@
 - <a href="/note/02장 - OAuth 2.0 용어 이해/2.1 OAuth 2.0 소개.md" target="_blank">2.1 OAuth 2.0 소개</a>
 - <a href="/note/02장 - OAuth 2.0 용어 이해/2.2 OAuth2 오픈 소스 - Keycloak 설치 및 설정.md" target="_blank">2.2 OAuth2 오픈 소스 - Keycloak 설치 및 설정</a>
 - <a href="/note/02장 - OAuth 2.0 용어 이해/2.3 OAuth 2.0 Roles 이해.md" target="_blank">2.3 OAuth 2.0 Roles 이해</a>
-- OAuth 2.0 Client Types 이해
+- <a href="/note/02장 - OAuth 2.0 용어 이해/2.4 OAuth 2.0 Client Types 이해.md" target="_blank">2.4 OAuth 2.0 Client Types 이해</a>
 - OAuth 2.0 Token Types 이해
 
 ---
