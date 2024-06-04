@@ -21,7 +21,7 @@
 - <a href="/note/03장 - OAuth 2.0 권한부여 유형/3.1 OAuth 2.0 Grant Type 개요.md" target="_blank">3.1 OAuth 2.0 Grant Type 개요</a>
 - <a href="/note/03장 - OAuth 2.0 권한부여 유형/3.2 OAuth 2.0 매개변수 용어.md" target="_blank">3.2 OAuth 2.0 매개변수 용어</a>
 - <a href="/note/03장 - OAuth 2.0 권한부여 유형/3.3 Authorization Code Grant Type - 권한 부여 코드 승인방식.md" target="_blank">3.3 Authorization Code Grant Type - 권한 부여 코드 승인방식</a>
-- Implicit Grant Type - 암묵적 승인 방식
+- <a href="/note/03장 - OAuth 2.0 권한부여 유형/3.4 Implicit Grant Type - 암묵적 승인 방식.md" target="_blank">3.4 Implicit Grant Type - 암묵적 승인 방식</a>
 - Resource Owner Password Credentials Grant Type - 패스워드 자격증명 승인 방식
 - Client Credentials Grant Type - 클라이언트 자격증명 승인 방식
 - Refresh Token Grant Type - 리프레시 토큰 승인 방식
