@@ -29,9 +29,11 @@
 
 ---
 
-# 04장: OAuth 2.0 OPEN ID Connect
-- 개요 및 특징
+# 04장: OAuth 2.0 Open ID Connect
+
+- <a href="/note/04장 - OAuth 2.0 Open ID Connect/4.1 OAuth 2.0 Open ID Connect - 개요 및 특징.md" target="_blank">4.1 OAuth 2.0 Open ID Connect - 개요 및 특징</a>
 - ID Token & Scope
+
 ---
 
 # 05장: OAuth 2.0 Client
