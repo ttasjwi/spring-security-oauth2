@@ -17,7 +17,8 @@
 ---
 
 # 03장: OAuth 2.0 권한부여 유형
-- OAuth 2.0 Grant Type 개요
+
+- <a href="/note/03장 - OAuth 2.0 권한부여 유형/3.1 OAuth 2.0 Grant Type 개요.md" target="_blank">3.1 OAuth 2.0 Grant Type 개요</a>
 - Authorization Code Grant Type - 권한 부여 코드 승인 방식
 - Implicit Grant Type - 암묵적 승인 방식
 - Resource Owner Password Credentials Grant Type - 패스워드 자격증명 승인 방식
