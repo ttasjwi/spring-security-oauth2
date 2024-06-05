@@ -37,8 +37,11 @@
 ---
 
 # 05장: OAuth 2.0 Client
-- 스프링 시큐리티와 OAuth 2.0
+
+
+- <a href="/note/05장 - OAuth 2.0 Client/5.1 스프링 시큐리티 - OAuth 2.0 관련 프로젝트들.md" target="_blank">5.1 스프링 시큐리티 - OAuth 2.0 관련 프로젝트들</a>
 - OAuth 2.0 Client 소개
+
 ---
 
 # 06장: OAuth 2.0 Client Fundamentals
