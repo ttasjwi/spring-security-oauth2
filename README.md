@@ -40,7 +40,7 @@
 
 
 - <a href="/note/05장 - OAuth 2.0 Client/5.1 스프링 시큐리티 - OAuth 2.0 관련 프로젝트들.md" target="_blank">5.1 스프링 시큐리티 - OAuth 2.0 관련 프로젝트들</a>
-- OAuth 2.0 Client 소개
+- <a href="/note/05장 - OAuth 2.0 Client/5.2 OAuth 2.0 Client 모듈.md" target="_blank">5.2 OAuth 2.0 Client 모듈</a>
 
 ---
 
