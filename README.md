@@ -48,7 +48,7 @@
 
 - <a href="/note/06장 - OAuth 2.0 Client 기초/6.1 클라이언트 앱 시작하기 - application.yml & OAuth2ClientProperties.md" target="_blank">6.1 클라이언트 앱 시작하기 - application.yml & OAuth2ClientProperties</a>
 - <a href="/note/06장 - OAuth 2.0 Client 기초/6.2 ClientRegistration 이해 및 활용.md" target="_blank">6.2 ClientRegistration 이해 및 활용</a>
-- ClientRegistrationRepository 이해 및 활용
+- <a href="/note/06장 - OAuth 2.0 Client 기초/6.3 ClientRegistrationRepository 이해 및 활용.md" target="_blank">6.3 ClientRegistrationRepository 이해 및 활용</a>
 - 자동설정에 의한 초기화 과정 이해
 
 ---
