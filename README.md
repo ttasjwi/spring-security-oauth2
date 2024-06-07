@@ -54,7 +54,8 @@
 ---
 
 # 07장: OAuth 2.0 Client - oauth2Login()
-- OAuth2LoginConfigurer 초기화 이해
+
+- <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.1 OAuth2LoginConfigurer 초기화 이해.md" target="_blank">7.1 OAuth2LoginConfigurer 초기화 이해</a>
 - OAuth2 로그인 구현 - OAuth 2.0 Login Page 생성
 - OAuth2 로그인 구현 - Authorization Code 요청하기
 - OAuth2 로그인 구현 - Access Token 교환하기
