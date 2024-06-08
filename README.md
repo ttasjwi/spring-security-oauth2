@@ -56,7 +56,7 @@
 # 07장: OAuth 2.0 Client - oauth2Login()
 
 - <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.1 OAuth2LoginConfigurer 초기화 이해.md" target="_blank">7.1 OAuth2LoginConfigurer 초기화 이해</a>
-- OAuth2 로그인 구현 - OAuth 2.0 Login Page 생성
+- <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.2 OAuth2 로그인 구현 - OAuth 2.0 Login Page 생성.md" target="_blank">7.2 OAuth2 로그인 구현 - OAuth 2.0 Login Page 생성</a>
 - OAuth2 로그인 구현 - Authorization Code 요청하기
 - OAuth2 로그인 구현 - Access Token 교환하기
 - OAuth2 로그인 구현 - Oauth 2.0 User 모델 소개(1)
@@ -64,7 +64,7 @@
 - OAuth2 로그인 구현 - UserInfo 엔드포인트 요청하기
 - OAuth2 로그인 구현 - OpenID Connect 로그아웃
 - OAuth2 로그인 구현 - Spring MVC 인증 객체 참조하기
-- API 커스텀 구현 -Authorization BaseUrl & Redirection BaseUrl
+- API 커스텀 구현 - Authorization BaseUrl & Redirection BaseUrl
 - API 커스텀 구현 - OAuth2AuthorizationRequestResolver(1)
 - API 커스텀 구현 - OAuth2AuthorizationRequestResolver(2)
 

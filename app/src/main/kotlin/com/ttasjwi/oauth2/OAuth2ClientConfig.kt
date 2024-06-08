@@ -15,7 +15,10 @@ class OAuth2ClientConfig {
             authorizeHttpRequests {
                 authorize(anyRequest, authenticated)
             }
-            oauth2Login {  }
+            oauth2Login {
+                loginPage = "/login"
+                permitAll()
+            }
         }
         return http.build()
     }
