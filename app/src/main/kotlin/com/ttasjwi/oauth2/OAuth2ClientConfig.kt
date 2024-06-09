@@ -16,7 +16,9 @@ class OAuth2ClientConfig {
                 authorize(anyRequest, authenticated)
             }
             oauth2Login {
-                loginPage = "/login"
+                authorizationEndpoint {
+                    baseUri = "/my-oauth2/authorization"
+                }
                 permitAll()
             }
         }
