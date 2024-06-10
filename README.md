@@ -58,7 +58,7 @@
 - <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.1 OAuth2LoginConfigurer 초기화 이해.md" target="_blank">7.1 OAuth2LoginConfigurer 초기화 이해</a>
 - <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.2 OAuth2 로그인 구현 - OAuth 2.0 Login Page 생성.md" target="_blank">7.2 OAuth2 로그인 구현 - OAuth 2.0 Login Page 생성</a>
 - <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.3 OAuth2 로그인 구현 - Authorization Code 요청하기.md" target="_blank">7.3 OAuth2 로그인 구현 - Authorization Code 요청하기</a>
-- OAuth2 로그인 구현 - Access Token 교환하기
+- <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.4 OAuth2 로그인 구현 - Access Token 교환하기.md" target="_blank">7.4 OAuth2 로그인 구현 - Access Token 교환하기</a>
 - OAuth2 로그인 구현 - Oauth 2.0 User 모델 소개(1)
 - OAuth2 로그인 구현 - Oauth 2.0 User 모델 소개(2)
 - OAuth2 로그인 구현 - UserInfo 엔드포인트 요청하기
