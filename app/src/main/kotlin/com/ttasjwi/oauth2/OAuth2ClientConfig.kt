@@ -13,14 +13,9 @@ class OAuth2ClientConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             authorizeHttpRequests {
-                authorize(anyRequest, authenticated)
+                authorize(anyRequest, permitAll)
             }
-            oauth2Login {
-                authorizationEndpoint {
-                    baseUri = "/my-oauth2/authorization"
-                }
-                permitAll()
-            }
+            oauth2Login {}
         }
         return http.build()
     }
