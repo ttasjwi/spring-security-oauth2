@@ -1,74 +1,42 @@
 package com.ttasjwi.oauth2
 
-import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest
-import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest
-import org.springframework.security.oauth2.core.OAuth2AccessToken
-import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames
-import org.springframework.security.oauth2.core.oidc.OidcIdToken
+import com.ttasjwi.oauth2.support.logging.getLogger
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.annotation.AuthenticationPrincipal
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken
 import org.springframework.security.oauth2.core.oidc.user.OidcUser
 import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
-import java.time.Instant
 
 @RestController
-class IndexController(
-    private val clientRegistrationRepository: ClientRegistrationRepository,
-) {
+class IndexController {
+
+    companion object {
+        private val log = getLogger(IndexController::class.java)
+    }
 
     @GetMapping("/")
     fun index(): String {
         return "index"
     }
 
-
-    /**
-     * OAuth 2.0 방식
-     */
-    @GetMapping("/user")
-    fun oauth2User(accessToken: String): OAuth2User {
-        val clientRegistration = clientRegistrationRepository.findByRegistrationId("keycloak")!!
-
-        val oauth2AccessToken = OAuth2AccessToken(
-            OAuth2AccessToken.TokenType.BEARER,
-            accessToken,
-            Instant.now(),
-            Instant.MAX
-        )
-        val request = OAuth2UserRequest(clientRegistration, oauth2AccessToken)
-        val oauth2UserService = DefaultOAuth2UserService()
-
-        val oauth2User = oauth2UserService.loadUser(request)
-        return oauth2User
+    @GetMapping("user")
+    fun user(authentication: Authentication): OAuth2User {
+        val token = authentication as OAuth2AuthenticationToken
+        val user = token.principal
+        return user
     }
 
-    /**
-     * OpenID Connect 방식
-     */
-    @GetMapping("/oidc")
-    fun oidcUser(accessToken: String, idToken: String): OidcUser {
-        val clientRegistration = clientRegistrationRepository.findByRegistrationId("keycloak")!!
+    @GetMapping("/oauth2User")
+    fun oauth2User(@AuthenticationPrincipal user: OAuth2User): OAuth2User {
+        log.info { "OAuth2User = $user" }
+        return user
+    }
 
-        val oauth2AccessToken = OAuth2AccessToken(
-            OAuth2AccessToken.TokenType.BEARER,
-            accessToken,
-            Instant.now(),
-            Instant.MAX
-        )
-
-        val idTokenClaims = mapOf(
-            IdTokenClaimNames.ISS to "http://localhost:8080/realms/oauth2",
-            IdTokenClaimNames.SUB to "5800c6e2-203d-4f0e-8343-bbb948f16807",
-            "preferred_username" to "user",
-        )
-        val oidcIdToken = OidcIdToken(idToken, Instant.now(), Instant.MAX, idTokenClaims)
-        val request = OidcUserRequest(clientRegistration, oauth2AccessToken, oidcIdToken)
-        val oidcUserService = OidcUserService()
-
-        val oidcUser = oidcUserService.loadUser(request)
-        return oidcUser
+    @GetMapping("/oidcUser")
+    fun oidcUser(@AuthenticationPrincipal user: OidcUser): OidcUser {
+        log.info { "OidcUser = $user" }
+        return user
     }
 }
