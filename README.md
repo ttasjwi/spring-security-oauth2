@@ -61,7 +61,7 @@
 - <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.4 OAuth2 로그인 구현 - Access Token 교환하기.md" target="_blank">7.4 OAuth2 로그인 구현 - Access Token 교환하기</a>
 - <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.5 OAuth2 로그인 구현 - Oauth 2.0 User 모델 소개.md" target="_blank">7.5 OAuth2 로그인 구현 - Oauth 2.0 User 모델 소개</a>
 - <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.6 OAuth2 로그인 구현 - UserInfo 엔드포인트 요청하기.md" target="_blank">7.6 OAuth2 로그인 구현 - UserInfo 엔드포인트 요청하기</a>
-- OAuth2 로그인 구현 - OpenID Connect 로그아웃
+- <a href="/note/07장 - OAuth 2.0 Client - oauth2Login()/7.7 OAuth2 로그인 구현 - OpenID Connect 로그아웃.md" target="_blank">7.7 OAuth2 로그인 구현 - OpenID Connect 로그아웃</a>
 - OAuth2 로그인 구현 - Spring MVC 인증 객체 참조하기
 - API 커스텀 구현 - Authorization BaseUrl & Redirection BaseUrl
 - API 커스텀 구현 - OAuth2AuthorizationRequestResolver(1)
