@@ -20,7 +20,7 @@ spring:
             # OAuth 2.0 권한부여 타입
             authorizationGrantType: authorization_code
             # 인가 서버에서 권한 코드 부여 후 클라이언트로 다시 리다이렉트 하는 위치
-            redirectUri: http://localhost:8081/login/oauth2/code/keycloak
+            redirectUri: http://localhost:8081/login/v2/oauth2/code/keycloak
             # 인가 서버 token 발급 시 Client를 입증할 수단
             # client_secret_basic -> client_id:client_secret 값을 base64 인코딩한 값을 Authorization 헤더에 삽입하여 전달하는 방식
             # client_secret_post : 파라미터 방식
