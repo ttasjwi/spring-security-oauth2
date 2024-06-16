@@ -1,40 +1,31 @@
 package com.ttasjwi.oauth2
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
-import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter
-import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestResolver
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint
+import org.springframework.security.web.savedrequest.NullRequestCache
 
 @Configuration
-class OAuth2ClientConfig(
-    private val clientRegistrationRepository: ClientRegistrationRepository
-) {
+class OAuth2ClientConfig {
 
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             authorizeHttpRequests {
-                authorize(PathRequest.toStaticResources().atCommonLocations(), permitAll)
-                authorize("/home", permitAll)
+                authorize("/", permitAll)
                 authorize(anyRequest, authenticated)
             }
-            oauth2Login {
-                authorizationEndpoint {
-                    authorizationRequestResolver = customOAuth2AuthorizationRequestResolver()
-                }
+            oauth2Client {}
+            exceptionHandling {
+                authenticationEntryPoint = LoginUrlAuthenticationEntryPoint("/oauth2/authorization/keycloak")
+            }
+            requestCache {
+                requestCache = NullRequestCache()
             }
         }
         return http.build()
-    }
-
-    private fun customOAuth2AuthorizationRequestResolver() : OAuth2AuthorizationRequestResolver {
-        return CustomOAuth2AuthorizationRequestResolver.of(
-            clientRegistrationRepository, OAuth2AuthorizationRequestRedirectFilter.DEFAULT_AUTHORIZATION_REQUEST_BASE_URI
-        )
     }
 }
