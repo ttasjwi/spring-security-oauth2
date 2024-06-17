@@ -72,7 +72,7 @@
 # 08장: OAuth 2.0 Client - oauth2Client()
 
 - <a href="/note/08장 - OAuth 2.0 Client - oauth2Client()/8.1 OAuth2ClientConfigurer 초기화 이해.md" target="_blank">8.1 OAuth2ClientConfigurer 초기화 이해</a>
-- OAuth2AuthorizedClient 이해 및 활용
+- <a href="/note/08장 - OAuth 2.0 Client - oauth2Client()/8.2 OAuth2AuthorizedClient 이해 및 활용.md" target="_blank">8.2 OAuth2AuthorizedClient 이해 및 활용</a>
 - DefaultOAuth2AuthorizedClientManager 소개 및 특징
 - DefaultOAuth2AuthorizedClientManager 기본 환경 구성
 - DefaultOAuth2AuthorizedClientManager - Resource Owner Password 권한 부여 구현하기(1)

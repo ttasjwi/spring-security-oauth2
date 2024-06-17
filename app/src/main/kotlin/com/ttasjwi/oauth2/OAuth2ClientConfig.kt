@@ -1,5 +1,6 @@
 package com.ttasjwi.oauth2
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -15,15 +16,22 @@ class OAuth2ClientConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             authorizeHttpRequests {
-                authorize("/", permitAll)
+                authorize(PathRequest.toStaticResources().atCommonLocations(), permitAll)
+                authorize("/home", permitAll)
+                authorize("/client", permitAll)
+                authorize("/favicon.ico", permitAll)
+                authorize("/error", permitAll)
                 authorize(anyRequest, authenticated)
             }
             oauth2Client {}
             exceptionHandling {
-                authenticationEntryPoint = LoginUrlAuthenticationEntryPoint("/oauth2/authorization/keycloak")
+                authenticationEntryPoint = LoginUrlAuthenticationEntryPoint("/home")
             }
             requestCache {
                 requestCache = NullRequestCache()
+            }
+            logout {
+                logoutSuccessUrl = "/home"
             }
         }
         return http.build()

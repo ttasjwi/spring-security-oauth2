@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="/js/home.js"></script>
+</head>
+<body>
+<div>Welcome</div>
+<form sec:authorize="isAnonymous()" action="#">
+    <p><input type="button" onclick="authorizationCode()" value="AuthorizationCode Grant"/>
+    <p><input type="button" onclick="password()" value="Resource Owner Password Grant"/>
+    <p><input type="button" onclick="clientCredentials()" value="Client Credentials Grant"/>
+</form>
+</body>
+</html>

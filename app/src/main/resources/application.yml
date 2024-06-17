@@ -13,7 +13,7 @@ spring:
             clientSecret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
             clientName: oauth2-client-app
             authorizationGrantType: authorization_code
-            redirectUri: http://localhost:8081/
+            redirectUri: http://localhost:8081/client
             clientAuthenticationMethod: client_secret_basic
             scope: openid,profile
         provider:
