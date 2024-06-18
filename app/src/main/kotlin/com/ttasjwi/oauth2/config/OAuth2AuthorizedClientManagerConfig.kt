@@ -52,8 +52,8 @@ class OAuth2AuthorizedClientManagerConfig {
             val contextAttributes = mutableMapOf<String, Any>()
 
             val request = oAuth2AuthorizeRequest.getAttribute(HttpServletRequest::class.java.name) as HttpServletRequest
-            val username: String = request.getParameter(OAuth2ParameterNames.USERNAME)
-            val password: String = request.getParameter(OAuth2ParameterNames.PASSWORD)
+            val username = request.getParameter(OAuth2ParameterNames.USERNAME)
+            val password = request.getParameter(OAuth2ParameterNames.PASSWORD)
 
             if (StringUtils.hasText(username) && StringUtils.hasText(password)) {
                 contextAttributes[OAuth2AuthorizationContext.USERNAME_ATTRIBUTE_NAME] = username
