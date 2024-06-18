@@ -5,11 +5,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientProviderBuilder
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
-import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizedClientManager
-import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint
 import org.springframework.security.web.savedrequest.NullRequestCache
@@ -41,26 +36,6 @@ class SecurityConfig {
             }
         }
         return http.build()
-    }
-
-    @Bean
-    fun oauth2AuthorizedClientManager(
-        clientRegistrationRepository: ClientRegistrationRepository,
-        oauth2AuthorizedClientRepository: OAuth2AuthorizedClientRepository
-    ): OAuth2AuthorizedClientManager {
-
-        val oauth2AuthorizedClientManager = DefaultOAuth2AuthorizedClientManager(clientRegistrationRepository, oauth2AuthorizedClientRepository)
-
-        val oauth2AuthorizedClientProvider =
-            OAuth2AuthorizedClientProviderBuilder.builder()
-                .authorizationCode()
-                .password() // deprecated
-                .clientCredentials()
-                .refreshToken()
-                .build()
-
-        oauth2AuthorizedClientManager.setAuthorizedClientProvider(oauth2AuthorizedClientProvider)
-        return oauth2AuthorizedClientManager
     }
 
 }
