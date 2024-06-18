@@ -1,4 +1,4 @@
-package com.ttasjwi.oauth2
+package com.ttasjwi.oauth2.controller
 
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.security.core.authority.SimpleGrantedAuthority
