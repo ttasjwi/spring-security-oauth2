@@ -78,7 +78,7 @@
 - <a href="/note/08장 - OAuth 2.0 Client - oauth2Client()/8.5 DefaultOAuth2AuthorizedClientManager - Resource Owner Password 권한 부여 구현하기.md" target="_blank">8.5 DefaultOAuth2AuthorizedClientManager - Resource Owner Password 권한 부여 구현하기</a>
 - <a href="/note/08장 - OAuth 2.0 Client - oauth2Client()/8.6 DefaultOAuth2AuthorizedClientManager - Client Credentials 권한 부여 구현하기.md" target="_blank">8.6 DefaultOAuth2AuthorizedClientManager - Client Credentials 권한 부여 구현하기</a>
 - <a href="/note/08장 - OAuth 2.0 Client - oauth2Client()/8.7 DefaultOAuth2AuthorizedClientManager - Refresh Token 권한 부여 구현하기.md" target="_blank">8.7 DefaultOAuth2AuthorizedClientManager - Refresh Token 권한 부여 구현하기</a>
-- DefaultOAuth2AuthorizedClientManager -필터 기반으로 구현하기
+- <a href="/note/08장 - OAuth 2.0 Client - oauth2Client()/8.8 DefaultOAuth2AuthorizedClientManager -필터 기반으로 구현하기.md" target="_blank">8.8 DefaultOAuth2AuthorizedClientManager -필터 기반으로 구현하기</a>
 - @RegisteredOAuth2AuthorizedClient 이해 및 활용
 
 ---

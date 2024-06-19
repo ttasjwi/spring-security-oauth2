@@ -1,12 +1,10 @@
 package com.ttasjwi.oauth2.config
 
-import com.ttasjwi.oauth2.security.CustomOAuth2AuthorizationSuccessHandler
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.oauth2.client.OAuth2AuthorizationContext
 import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientProviderBuilder
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
 import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizedClientManager
@@ -25,7 +23,7 @@ class OAuth2AuthorizedClientManagerConfig {
         clientRegistrationRepository: ClientRegistrationRepository,
         oauth2AuthorizedClientRepository: OAuth2AuthorizedClientRepository,
 
-        ): OAuth2AuthorizedClientManager {
+        ): DefaultOAuth2AuthorizedClientManager {
 
         val oauth2AuthorizedClientManager =
             DefaultOAuth2AuthorizedClientManager(clientRegistrationRepository, oauth2AuthorizedClientRepository)
@@ -40,11 +38,6 @@ class OAuth2AuthorizedClientManagerConfig {
                 .build()
 
         oauth2AuthorizedClientManager.setAuthorizedClientProvider(oauth2AuthorizedClientProvider)
-        oauth2AuthorizedClientManager.setAuthorizationSuccessHandler(
-            CustomOAuth2AuthorizationSuccessHandler(
-                oauth2AuthorizedClientRepository
-            )
-        )
         oauth2AuthorizedClientManager.setContextAttributesMapper(contextAttributesMapper())
         return oauth2AuthorizedClientManager
     }
