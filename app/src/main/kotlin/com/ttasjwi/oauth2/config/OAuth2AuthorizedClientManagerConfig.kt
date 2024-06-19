@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizedCli
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames
 import org.springframework.util.StringUtils
+import java.time.Duration
 import java.util.function.Function
 
 
@@ -32,9 +33,10 @@ class OAuth2AuthorizedClientManagerConfig {
         val oauth2AuthorizedClientProvider =
             OAuth2AuthorizedClientProviderBuilder.builder()
                 .authorizationCode()
-                .password() // deprecated
                 .clientCredentials()
-                .refreshToken()
+                // 액세스토큰 실제 만료 시간으로부터 1시간을 차감한 값을 만료시간으로 간주
+                .password{ it.clockSkew(Duration.ofSeconds(3600))}
+                .refreshToken{ it.clockSkew(Duration.ofSeconds(3600))}
                 .build()
 
         oauth2AuthorizedClientManager.setAuthorizedClientProvider(oauth2AuthorizedClientProvider)

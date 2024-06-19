@@ -16,21 +16,21 @@ spring:
 #            redirectUri: http://localhost:8081/client
 #            clientAuthenticationMethod: client_secret_basic
 #            scope: openid,profile
-#          keycloak:
-#            clientId: oauth2-client-app
-#            clientSecret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
-#            clientName: oauth2-client-app
-#            authorizationGrantType: password
-#            redirectUri: http://localhost:8081/client
-#            clientAuthenticationMethod: client_secret_basic
-#            scope: openid,profile
           keycloak:
             clientId: oauth2-client-app
             clientSecret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
             clientName: oauth2-client-app
-            authorizationGrantType: client_credentials
+            authorizationGrantType: password
             redirectUri: http://localhost:8081/client
             clientAuthenticationMethod: client_secret_basic
+            scope: openid,profile
+#          keycloak:
+#            clientId: oauth2-client-app
+#            clientSecret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
+#            clientName: oauth2-client-app
+#            authorizationGrantType: client_credentials
+#            redirectUri: http://localhost:8081/client
+#            clientAuthenticationMethod: client_secret_basic
 #            scope: openid,profile
         provider:
           keycloak:
