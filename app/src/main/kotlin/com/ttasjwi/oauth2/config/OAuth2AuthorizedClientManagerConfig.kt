@@ -1,11 +1,11 @@
 package com.ttasjwi.oauth2.config
 
 import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.oauth2.client.OAuth2AuthorizationContext
-import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientProviderBuilder
+import org.springframework.security.core.Authentication
+import org.springframework.security.oauth2.client.*
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
 import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizedClientManager
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository
@@ -39,6 +39,7 @@ class OAuth2AuthorizedClientManagerConfig {
 
         oauth2AuthorizedClientManager.setAuthorizedClientProvider(oauth2AuthorizedClientProvider)
         oauth2AuthorizedClientManager.setContextAttributesMapper(contextAttributesMapper())
+        oauth2AuthorizedClientManager.setAuthorizationSuccessHandler(oauth2AuthorizationSuccessHandler(oauth2AuthorizedClientRepository))
         return oauth2AuthorizedClientManager
     }
 
@@ -55,6 +56,18 @@ class OAuth2AuthorizedClientManagerConfig {
                 contextAttributes[OAuth2AuthorizationContext.PASSWORD_ATTRIBUTE_NAME] = password
             }
             contextAttributes
+        }
+    }
+
+    @Bean
+    fun oauth2AuthorizationSuccessHandler(oauth2AuthorizedClientRepository: OAuth2AuthorizedClientRepository): OAuth2AuthorizationSuccessHandler {
+        return OAuth2AuthorizationSuccessHandler { authorizedClient, authentication: Authentication, attributes ->
+            oauth2AuthorizedClientRepository
+                .saveAuthorizedClient(
+                    authorizedClient, authentication,
+                    attributes[HttpServletRequest::class.java.name] as HttpServletRequest,
+                    attributes[HttpServletResponse::class.java.name] as HttpServletResponse
+                )
         }
     }
 }
