@@ -4,34 +4,30 @@ server:
   port: 8081
 
 spring:
+  mvc:
+    static-path-pattern: /static/**
   security:
     oauth2:
       client:
         registration:
-#          keycloak:
-#            clientId: oauth2-client-app
-#            clientSecret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
-#            clientName: oauth2-client-app
-#            authorizationGrantType: authorization_code
-#            redirectUri: http://localhost:8081/client
-#            clientAuthenticationMethod: client_secret_basic
-#            scope: openid,profile
+          google:
+            clientId: [구글 클라이언트 id]
+            clientSecret: [구글 클라이언트 secret]
+            redirectUri: http://localhost:8081/login/oauth2/code/google
+            scope: openid,profile,email
+          naver:
+            clientId: [네이버 클라이언트 id]
+            clientSecret: [네이버 클라이언트 secret]
+            redirectUri: http://localhost:8081/login/oauth2/code/naver
+            authorizationGrantType: authorization_code
+            scope: profile,email
           keycloak:
             clientId: oauth2-client-app
             clientSecret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
             clientName: oauth2-client-app
-            authorizationGrantType: password
-            redirectUri: http://localhost:8081/client
-            clientAuthenticationMethod: client_secret_basic
-            scope: openid,profile
-#          keycloak:
-#            clientId: oauth2-client-app
-#            clientSecret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
-#            clientName: oauth2-client-app
-#            authorizationGrantType: client_credentials
-#            redirectUri: http://localhost:8081/client
-#            clientAuthenticationMethod: client_secret_basic
-#            scope: openid,profile
+            authorizationGrantType: authorization_code
+            redirectUri: http://localhost:8081/login/oauth2/code/keycloak
+            scope: openid,profile,email
         provider:
           keycloak:
             issuerUri: http://localhost:8080/realms/oauth2
@@ -40,3 +36,8 @@ spring:
             jwkSetUri: http://localhost:8080/realms/oauth2/protocol/openid-connect/certs
             userInfoUri: http://localhost:8080/realms/oauth2/protocol/openid-connect/userinfo
             userNameAttribute: preferred_username
+          naver:
+            authorizationUri: https://nid.naver.com/oauth2.0/authorize
+            tokenUri: https://nid.naver.com/oauth2.0/token
+            userInfoUri: https://openapi.naver.com/v1/nid/me
+            userNameAttribute: response
