@@ -87,9 +87,7 @@
 
 - <a href="/note/09장 - OAuth 2.0 Client - Social Login (Google, Naver, KaKao) + FormLogin/9.1 OAuth 2.0 Social Login 연동 구현 - 구글, 네이버 클라이언트 등록.md" target="_blank">9.1 OAuth 2.0 Social Login 연동 구현 - 구글, 네이버 클라이언트 등록</a>
 - <a href="/note/09장 - OAuth 2.0 Client - Social Login (Google, Naver, KaKao) + FormLogin/9.2 OAuth 2.0 Social Login 연동 구현 - 구글, 네이버 로그인.md" target="_blank">9.2 OAuth 2.0 Social Login 연동 구현 - 구글, 네이버 로그인</a>
-- OAuth 2.0 Social Login 연동 구현 (4)
-- OAuth 2.0 Social Login 연동 구현 (5)
-- OAuth 2.0 Social Login 연동 구현 (6)
+- <a href="/note/09장 - OAuth 2.0 Client - Social Login (Google, Naver, KaKao) + FormLogin/9.3 OAuth 2.0 Social Login 연동 구현 - 카카오 로그인 추가.md" target="_blank">9.3 OAuth 2.0 Social Login 연동 구현 - 카카오 로그인 추가</a>
 
 ---
 

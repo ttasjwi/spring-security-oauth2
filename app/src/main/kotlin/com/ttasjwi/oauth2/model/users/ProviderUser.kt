@@ -1,4 +1,4 @@
-package com.ttasjwi.oauth2.model
+package com.ttasjwi.oauth2.model.users
 
 import org.springframework.security.core.GrantedAuthority
 

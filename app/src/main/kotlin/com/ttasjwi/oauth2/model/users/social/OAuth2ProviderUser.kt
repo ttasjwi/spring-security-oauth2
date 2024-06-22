@@ -1,5 +1,6 @@
-package com.ttasjwi.oauth2.model
+package com.ttasjwi.oauth2.model.users.social
 
+import com.ttasjwi.oauth2.model.users.ProviderUser
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.oauth2.client.registration.ClientRegistration
@@ -10,13 +11,10 @@ abstract class OAuth2ProviderUser(
     private val _attributes: Map<String, Any>,
     private val oAuth2User: OAuth2User,
     private val clientRegistration: ClientRegistration
-) : ProviderUser{
+) : ProviderUser {
 
     override val password: String
         get() = UUID.randomUUID().toString()
-
-    override val email: String
-        get() = attributes["email"] as String
 
     override val authorities: Collection<out GrantedAuthority>
         get() = oAuth2User.authorities.map { SimpleGrantedAuthority(it.authority) }.toList()

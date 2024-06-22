@@ -1,24 +1,19 @@
 package com.ttasjwi.oauth2.service
 
-import com.ttasjwi.oauth2.model.*
+import com.ttasjwi.oauth2.converter.ProviderUserConverter
+import com.ttasjwi.oauth2.converter.ProviderUserRequest
+import com.ttasjwi.oauth2.model.users.ProviderUser
+import com.ttasjwi.oauth2.model.users.User
 import com.ttasjwi.oauth2.repository.UserRepository
-import org.springframework.security.oauth2.client.registration.ClientRegistration
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest
-import org.springframework.security.oauth2.core.user.OAuth2User
 
 abstract class AbstractOAuth2UserService(
     private val userRepository: UserRepository,
+    private val providerUserConverter: ProviderUserConverter
 ) {
 
-    fun providerUser(clientRegistration: ClientRegistration, oauth2User: OAuth2User): ProviderUser? {
-        val registrationId = clientRegistration.registrationId
-
-        return when (registrationId) {
-            "google" -> GoogleUser(oauth2User, clientRegistration)
-            "keycloak" -> KeycloakUser(oauth2User, clientRegistration)
-            "naver" -> NaverUser(oauth2User, clientRegistration)
-            else -> null
-        }
+    fun providerUser(providerUserRequest: ProviderUserRequest): ProviderUser? {
+        return providerUserConverter.convert(providerUserRequest)
     }
 
     fun registerUser(providerUser: ProviderUser, userRequest: OAuth2UserRequest) {

@@ -1,6 +1,6 @@
 package com.ttasjwi.oauth2.repository
 
-import com.ttasjwi.oauth2.model.User
+import com.ttasjwi.oauth2.model.users.User
 import org.springframework.stereotype.Repository
 
 /**

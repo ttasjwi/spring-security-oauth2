@@ -117,10 +117,10 @@ h2 {
     background: #3ab509; }
     .social-login a.naver:hover {
       background: #2a8705; }
-  .social-login a.keycloak {
-    background: #04aed4; }
-    .social-login a.keycloak:hover {
-      background: #0485b0; }
+  .social-login a.kakao {
+    background: #F7E111; }
+    .social-login a.kakao:hover {
+      background: #FFDC00; }
   .social-login a.google {
     background: #ea4335; }
     .social-login a.google:hover {

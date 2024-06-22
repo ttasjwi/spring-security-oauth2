@@ -23,7 +23,7 @@ class IndexPageController {
         val name = when (authentication.authorizedClientRegistrationId) {
             "naver" -> (attributes["response"] as Map<*, *>)["name"]
             "google" -> attributes["sub"]
-            "keycloak" -> attributes["preferred_username"]
+            "kakao" -> attributes["sub"]
             else -> throw IllegalStateException()
         } as String
         return name
