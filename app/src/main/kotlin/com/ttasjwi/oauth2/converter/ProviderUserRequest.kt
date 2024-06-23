@@ -1,6 +1,6 @@
 package com.ttasjwi.oauth2.converter
 
-import org.springframework.security.core.userdetails.User
+import com.ttasjwi.oauth2.model.users.User
 import org.springframework.security.oauth2.client.registration.ClientRegistration
 import org.springframework.security.oauth2.core.user.OAuth2User
 

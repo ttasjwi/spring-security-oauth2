@@ -13,6 +13,9 @@ class KakaoOAuth2User(
             return attributes["id"] as String
         }
 
+    /**
+     * 카카오 oauth2 사용자정보 api -> kakao_account -> profile -> nickname : 닉네임
+     */
     override val username: String
         get() {
             val kakaoAccount = attributes["kakao_account"] as Map<*, *>
@@ -25,4 +28,6 @@ class KakaoOAuth2User(
             val kakaoAccount = attributes["kakao_account"] as Map<*, *>
             return kakaoAccount["email"] as String
         }
+
+    override var isCertificated = false
 }

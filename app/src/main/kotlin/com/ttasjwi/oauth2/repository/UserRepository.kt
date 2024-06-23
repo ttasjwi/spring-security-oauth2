@@ -1,12 +1,10 @@
 package com.ttasjwi.oauth2.repository
 
 import com.ttasjwi.oauth2.model.users.User
-import org.springframework.stereotype.Repository
 
 /**
  * 우리 서비스에서 회원을 저장하고 관리하는 리포지토리
  */
-@Repository
 class UserRepository {
 
     private val users: MutableMap<String, User> = mutableMapOf()

@@ -11,9 +11,10 @@ class ProviderUserConverterConfig {
     fun providerUserConverter(): ProviderUserConverter {
         return DelegatingProviderUserConverter(
             listOf(
+                FormProviderUserConverter(),
                 OAuth2GoogleProviderUserConverter(),
                 OAuth2NaverProviderUserConverter(),
-                OAuth2KakaoProviderUserConverter()
+                OAuth2KakaoProviderUserConverter(),
             )
         )
     }

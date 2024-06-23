@@ -2,6 +2,7 @@ package com.ttasjwi.oauth2.service
 
 import com.ttasjwi.oauth2.converter.ProviderUserConverter
 import com.ttasjwi.oauth2.converter.ProviderUserRequest
+import com.ttasjwi.oauth2.model.users.AuthUser
 import com.ttasjwi.oauth2.repository.UserRepository
 import com.ttasjwi.oauth2.support.logging.getLogger
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest
@@ -40,6 +41,6 @@ class CustomOidcUserService(
         // 회원가입
         super.registerUser(providerUser!!, userRequest)
 
-        return oauth2User
+        return AuthUser(providerUser)
     }
 }

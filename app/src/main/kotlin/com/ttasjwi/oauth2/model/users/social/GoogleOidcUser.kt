@@ -11,10 +11,15 @@ class GoogleOidcUser(
     override val id: String
         get() = super.attributes["sub"] as String
 
+    /**
+     * 사용자의 전체 이름: id_token -> name
+     */
     override val username: String
         get() = super.attributes["name"] as String
 
 
     override val email: String
         get() = super.attributes["email"] as String
+
+    override var isCertificated = false
 }

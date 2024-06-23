@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint
+import org.springframework.security.web.savedrequest.NullRequestCache
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 import org.springframework.security.web.util.matcher.OrRequestMatcher
 import org.springframework.security.web.util.matcher.RequestMatcher
@@ -20,7 +22,6 @@ class SecurityConfig(
     private val customOidcUserService: CustomOidcUserService
 ) {
 
-
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
@@ -29,9 +30,13 @@ class SecurityConfig(
                 authorize("/", permitAll)
                 authorize("/favicon.ico", permitAll)
                 authorize("/error", permitAll)
-                authorize("/api/user", hasAnyRole("SCOPE_profile", "SCOPE_email"))
-                authorize("/api/oidc", hasAnyRole("SCOPE_openid"))
                 authorize(anyRequest, authenticated)
+            }
+            formLogin {
+                loginPage = "/login"
+                loginProcessingUrl = "/loginProc"
+                defaultSuccessUrl("/", alwaysUse = true)
+                permitAll()
             }
             oauth2Login {
                 userInfoEndpoint {
@@ -39,8 +44,10 @@ class SecurityConfig(
                     oidcUserService = customOidcUserService
                 }
             }
-            logout {
-                logoutSuccessUrl = "/"
+            logout { disable() }
+            requestCache { requestCache = NullRequestCache() }
+            exceptionHandling {
+                authenticationEntryPoint = LoginUrlAuthenticationEntryPoint("/login")
             }
         }
         return http.build()

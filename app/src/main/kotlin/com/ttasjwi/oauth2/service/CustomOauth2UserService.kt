@@ -2,6 +2,7 @@ package com.ttasjwi.oauth2.service
 
 import com.ttasjwi.oauth2.converter.ProviderUserConverter
 import com.ttasjwi.oauth2.converter.ProviderUserRequest
+import com.ttasjwi.oauth2.model.users.AuthUser
 import com.ttasjwi.oauth2.model.users.ProviderUser
 import com.ttasjwi.oauth2.repository.UserRepository
 import com.ttasjwi.oauth2.support.logging.getLogger
@@ -41,6 +42,6 @@ class CustomOauth2UserService(
         // 회원가입
         super.registerUser(providerUser!!, userRequest)
 
-        return oauth2User
+        return AuthUser(providerUser)
     }
 }

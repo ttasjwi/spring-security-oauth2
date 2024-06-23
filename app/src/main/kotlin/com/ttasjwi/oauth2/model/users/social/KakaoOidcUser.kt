@@ -12,9 +12,14 @@ class KakaoOidcUser(
     override val id: String
         get() = attributes["sub"] as String
 
+    /**
+     * 카카오 id token -> nickname -> 닉네임
+     */
     override val username: String
         get() = attributes["nickname"] as String
 
     override val email: String
         get() = attributes["email"] as String
+
+    override var isCertificated = false
 }

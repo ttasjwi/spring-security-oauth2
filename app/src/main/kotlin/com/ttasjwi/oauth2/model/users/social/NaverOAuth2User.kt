@@ -13,10 +13,15 @@ class NaverOAuth2User(
     override val id: String
         get() = (attributes["response"] as Map<*, *>)["id"] as String
 
+    /**
+     * naver -> response/name : 회원 이름
+     */
     override val username: String
-        get() = (attributes["response"] as Map<*, *>)["email"] as String
+        get() = (attributes["response"] as Map<*, *>)["name"] as String
 
 
     override val email: String
         get() = (attributes["response"] as Map<*, *>)["email"] as String
+
+    override var isCertificated = true
 }

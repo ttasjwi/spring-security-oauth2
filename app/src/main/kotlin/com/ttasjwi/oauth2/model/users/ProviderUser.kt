@@ -8,6 +8,11 @@ interface ProviderUser {
     val password: String
     val email: String
     val provider: String
-    val authorities: Collection<out GrantedAuthority>
-    val attributes: Map<String, Any>
+    val authorities: MutableCollection<out GrantedAuthority>
+    val attributes: MutableMap<String, Any>
+    var isCertificated: Boolean
+
+    fun changeCertificated(certificated: Boolean) {
+        this.isCertificated = certificated
+    }
 }

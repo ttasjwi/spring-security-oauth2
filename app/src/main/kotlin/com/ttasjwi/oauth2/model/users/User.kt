@@ -9,5 +9,5 @@ class User(
     val password: String,
     val provider: String,
     val email: String,
-    val authorities: Collection<out GrantedAuthority>
+    val authorities: MutableCollection<out GrantedAuthority>
 )

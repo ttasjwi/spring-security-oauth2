@@ -1,6 +1,7 @@
 package com.ttasjwi.oauth2.controller
 
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken
+import com.ttasjwi.oauth2.model.users.AuthUser
+import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -9,24 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping
 class IndexPageController {
 
     @GetMapping("/")
-    fun indexPage(model: Model, authentication: OAuth2AuthenticationToken?): String {
-        if (authentication !== null) {
-            model.addAttribute("user", resolveUsername(authentication))
+    fun indexPage(model: Model, authentication: Authentication?): String {
+        if (authentication == null) {
+            return "index"
+        }
+        val user = authentication.principal as AuthUser
+        model.addAttribute("user", user.username)
+        model.addAttribute("provider", user.providerUser.provider)
+
+        if (!user.providerUser.isCertificated) {
+            return "selfcert"
         }
         return "index"
-    }
-
-    private fun resolveUsername(authentication: OAuth2AuthenticationToken): String {
-        val oauth2User = authentication.principal
-        val attributes = oauth2User.attributes
-
-        val name = when (authentication.authorizedClientRegistrationId) {
-            "naver" -> (attributes["response"] as Map<*, *>)["name"]
-            "google" -> attributes["sub"]
-            "kakao" -> attributes["sub"]
-            else -> throw IllegalStateException()
-        } as String
-        return name
     }
 
 }
