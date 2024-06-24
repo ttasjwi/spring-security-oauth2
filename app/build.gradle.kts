@@ -4,7 +4,7 @@ dependencies {
 
     // security
     implementation(Dependencies.SPRING_SECURITY)
-    implementation(Dependencies.SPRING_OAUTH2_CLIENT)
+    implementation(Dependencies.SPRING_OAUTH2_RESOURCE_SERVER)
 
     // thymeleaf
     implementation(Dependencies.THYMELEAF)

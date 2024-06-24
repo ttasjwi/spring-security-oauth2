@@ -93,7 +93,8 @@
 ---
 
 # 10장: OAuth 2.0 Resource Server
-- OAuth 2.0 Resource Server 소개 및 프로젝트 생성
+
+- <a href="/note/10장 - OAuth 2.0 Resource Server/10.1 OAuth 2.0 Resource Server 소개 및 프로젝트 생성.md" target="_blank">10.1 OAuth 2.0 Resource Server 소개 및 프로젝트 생성</a>
 - Resource Server 시작하기 - application.yml / OAuth2ResourceServerProperties
 - AuthenticationEntryPoint
 - 자동설정에 의한 초기화 과정
