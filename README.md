@@ -102,7 +102,8 @@
 ---
 
 # 11장: OAuth 2.0 Resource Server API - jwt()
-- JWT API 설정 및 검증 프로세스 이해
+
+- <a href="/note/11장 - OAuth 2.0 Resource Server API - jwt()/11.1 JWT API 설정 및 검증 프로세스 이해.md" target="_blank">11.1 JWT API 설정 및 검증 프로세스 이해</a>
 - JwtDecoder 소개 및 세부 흐름
 - JwtDecoder 생성 방법
 
