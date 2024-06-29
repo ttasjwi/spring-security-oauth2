@@ -111,6 +111,8 @@
 
 # 12장: OAuth 2.0 Resource Server - 검증 기초
 
+- <a href="/note/12장 - OAuth 2.0 Resource Server - 검증 기초/12.1 JCA & JCE - 소개 및 구조.md" target="_blank">12.1 JCA & JCE - 소개 및 구조</a>
+
 ---
 
 # 13장: OAuth 2.0 Resource Server - MAC & RSA 토큰 검증

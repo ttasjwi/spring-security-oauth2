@@ -1,11 +1,13 @@
 package com.ttasjwi.oauth2
 
+import com.ttasjwi.oauth2.SignatureTest.Companion.signatureTest
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 
 @SpringBootApplication
 class Main
 
 fun main(args: Array<String>) {
-    runApplication<Main>(*args)
+//    messageDigestTest("Spring Security")
+    signatureTest("Spring Security")
+//    runApplication<Main>(*args)
 }
