@@ -112,6 +112,7 @@
 # 12장: OAuth 2.0 Resource Server - 검증 기초
 
 - <a href="/note/12장 - OAuth 2.0 Resource Server - 검증 기초/12.1 JCA & JCE - 소개 및 구조.md" target="_blank">12.1 JCA & JCE - 소개 및 구조</a>
+- <a href="/note/12장 - OAuth 2.0 Resource Server - 검증 기초/12.2 JCA & JCE - 대칭키 & 비대칭키.md" target="_blank">12.2 JCA & JCE - 대칭키 & 비대칭키</a>
 
 ---
 
