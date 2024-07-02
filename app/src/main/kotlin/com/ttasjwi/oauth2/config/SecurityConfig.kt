@@ -1,7 +1,9 @@
 package com.ttasjwi.oauth2.config
 
 import com.ttasjwi.oauth2.security.filter.CustomLoginAuthenticationFilter
-import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext
+import com.ttasjwi.oauth2.security.filter.MacJwtAuthenticationFilter
+import com.ttasjwi.oauth2.security.signature.JWKRepository
+import com.ttasjwi.oauth2.security.signature.TokenSigner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -10,6 +12,7 @@ import org.springframework.security.authentication.ProviderManager
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.password.NoOpPasswordEncoder
@@ -17,36 +20,40 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
-import org.springframework.security.web.context.DelegatingSecurityContextRepository
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository
-import org.springframework.security.web.context.RequestAttributeSecurityContextRepository
-import org.springframework.security.web.context.SecurityContextRepository
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
 @Configuration
-class SecurityConfig {
+class SecurityConfig(
+    private val tokenSigner: TokenSigner,
+    private val jwkRepository: JWKRepository
+) {
 
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             csrf { disable() }
+            sessionManagement {
+                sessionCreationPolicy = SessionCreationPolicy.STATELESS
+            }
             authorizeHttpRequests {
                 authorize("/", permitAll)
                 authorize(anyRequest, authenticated)
             }
             addFilterBefore<UsernamePasswordAuthenticationFilter>(customLoginAuthenticationFilter())
+            addFilterBefore<UsernamePasswordAuthenticationFilter>(macJwtAuthenticationFilter())
         }
         return http.build()
     }
 
-    @Bean
-    fun customLoginAuthenticationFilter(): CustomLoginAuthenticationFilter {
-        val filter = CustomLoginAuthenticationFilter(AntPathRequestMatcher("/login", HttpMethod.POST.name()))
+    private fun customLoginAuthenticationFilter(): CustomLoginAuthenticationFilter {
+        val filter = CustomLoginAuthenticationFilter(AntPathRequestMatcher("/login", HttpMethod.POST.name()), tokenSigner)
         filter.setAuthenticationManager(authenticationManager())
-        filter.setSecurityContextRepository(securityContextRepository())
         return filter
     }
 
+    private fun macJwtAuthenticationFilter(): MacJwtAuthenticationFilter {
+        return MacJwtAuthenticationFilter(jwkRepository)
+    }
 
     @Bean
     fun authenticationManager(): AuthenticationManager {
@@ -65,13 +72,5 @@ class SecurityConfig {
 
     @Bean
     fun passwordEncoder(): PasswordEncoder = NoOpPasswordEncoder.getInstance()
-
-    @Bean
-    fun securityContextRepository(): SecurityContextRepository {
-        return DelegatingSecurityContextRepository(
-            HttpSessionSecurityContextRepository(),
-            RequestAttributeSecurityContextRepository()
-        )
-    }
 
 }

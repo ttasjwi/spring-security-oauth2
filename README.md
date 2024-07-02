@@ -121,6 +121,7 @@
 # 13장: OAuth 2.0 Resource Server - MAC & RSA 토큰 검증
 
 - <a href="/note/13장 - OAuth 2.0 Resource Server - MAC & RSA 토큰 검증/13.1 MAC & RSA 토큰 검증 - 기본 환경 및 공통 클래스 구성.md" target="_blank">13.1 MAC & RSA 토큰 검증 - 기본 환경 및 공통 클래스 구성</a>
+- <a href="/note/13장 - OAuth 2.0 Resource Server - MAC & RSA 토큰 검증/13.2 MAC 검증 기능 구현 - MacJwtAuthenticationFilter.md" target="_blank">13.2 MAC 검증 기능 구현 - MacJwtAuthenticationFilter</a>
 
 
 ---
