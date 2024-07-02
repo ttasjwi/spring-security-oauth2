@@ -26,4 +26,5 @@ class SignatureConfig {
     fun jwk(): JWK {
         return OctetSequenceKeyGenerator(256).keyID("macKey").algorithm(JWSAlgorithm.HS256).generate()
     }
+
 }
