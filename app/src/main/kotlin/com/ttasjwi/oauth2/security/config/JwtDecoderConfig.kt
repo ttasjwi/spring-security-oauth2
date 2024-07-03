@@ -1,4 +1,4 @@
-package com.ttasjwi.oauth2.config
+package com.ttasjwi.oauth2.security.config
 
 import com.nimbusds.jose.jwk.JWK
 import com.nimbusds.jose.jwk.OctetSequenceKey

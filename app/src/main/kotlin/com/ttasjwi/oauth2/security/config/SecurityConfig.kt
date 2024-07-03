@@ -1,29 +1,25 @@
-package com.ttasjwi.oauth2.config
+package com.ttasjwi.oauth2.security.config
 
+import com.nimbusds.jose.JWSVerifier
 import com.ttasjwi.oauth2.security.filter.CustomLoginAuthenticationFilter
-import com.ttasjwi.oauth2.security.signature.JWKRepository
+import com.ttasjwi.oauth2.security.filter.JwtAuthenticationFilter
 import com.ttasjwi.oauth2.security.signature.TokenSigner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.authentication.ProviderManager
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.config.http.SessionCreationPolicy
-import org.springframework.security.core.userdetails.User
-import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.crypto.password.NoOpPasswordEncoder
-import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
 @Configuration
 class SecurityConfig(
+    private val authenticationManager: AuthenticationManager,
     private val tokenSigner: TokenSigner,
+    private val jwsVerifier: JWSVerifier
 ) {
 
     @Bean
@@ -38,35 +34,19 @@ class SecurityConfig(
                 authorize(anyRequest, authenticated)
             }
             addFilterBefore<UsernamePasswordAuthenticationFilter>(customLoginAuthenticationFilter())
-            oauth2ResourceServer {
-                jwt {  }
-            }
+            addFilterBefore<UsernamePasswordAuthenticationFilter>(jwtTokenAuthenticationFilter())
         }
         return http.build()
     }
 
     private fun customLoginAuthenticationFilter(): CustomLoginAuthenticationFilter {
         val filter = CustomLoginAuthenticationFilter(AntPathRequestMatcher("/login", HttpMethod.POST.name()), tokenSigner)
-        filter.setAuthenticationManager(authenticationManager())
+        filter.setAuthenticationManager(authenticationManager)
         return filter
     }
 
-    @Bean
-    fun authenticationManager(): AuthenticationManager {
-        val provider = DaoAuthenticationProvider()
-        provider.setUserDetailsService(userDetailsService())
-        provider.setPasswordEncoder(passwordEncoder())
-
-        return ProviderManager(provider)
+    private fun jwtTokenAuthenticationFilter(): JwtAuthenticationFilter {
+        return JwtAuthenticationFilter(jwsVerifier)
     }
-
-    @Bean
-    fun userDetailsService(): UserDetailsService {
-        val user = User.withUsername("user").password("1111").authorities("ROLE_USER").build()
-        return InMemoryUserDetailsManager(user)
-    }
-
-    @Bean
-    fun passwordEncoder(): PasswordEncoder = NoOpPasswordEncoder.getInstance()
 
 }
