@@ -128,6 +128,7 @@
 - <a href="/note/13장 - OAuth 2.0 Resource Server - MAC & RSA 토큰 검증/13.6 RSA 검증 기능 구현 - PublicKey.txt 에 의한 검증.md" target="_blank">13.6 RSA 검증 기능 구현 - PublicKey.txt 에 의한 검증</a>
 - <a href="/note/13장 - OAuth 2.0 Resource Server - MAC & RSA 토큰 검증/13.7 RSA 검증 기능 구현 - JwkSetUri 에 의한 검증.md" target="_blank">13.7 RSA 검증 기능 구현 - JwkSetUri 에 의한 검증</a>
 - <a href="/note/13장 - OAuth 2.0 Resource Server - MAC & RSA 토큰 검증/13.8 Authentication & @AuthenticationPrincipal.md" target="_blank">13.8 Authentication & @AuthenticationPrincipal</a>
+- <a href="/note/13장 - OAuth 2.0 Resource Server - MAC & RSA 토큰 검증/13.9 검증 아키텍처 이해 - BearerTokenAuthenticationFilter.md" target="_blank">13.9 검증 아키텍처 이해 - BearerTokenAuthenticationFilter</a>
 
 ---
 
