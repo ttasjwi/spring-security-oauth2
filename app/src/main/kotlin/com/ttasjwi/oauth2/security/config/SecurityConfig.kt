@@ -1,8 +1,6 @@
 package com.ttasjwi.oauth2.security.config
 
-import com.nimbusds.jose.JWSVerifier
 import com.ttasjwi.oauth2.security.filter.CustomLoginAuthenticationFilter
-import com.ttasjwi.oauth2.security.filter.JwtAuthenticationFilter
 import com.ttasjwi.oauth2.security.signature.TokenSigner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -18,8 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 @Configuration
 class SecurityConfig(
     private val authenticationManager: AuthenticationManager,
-    private val tokenSigner: TokenSigner,
-    private val jwsVerifier: JWSVerifier
+    private val tokenSigner: TokenSigner
 ) {
 
     @Bean
@@ -34,7 +31,9 @@ class SecurityConfig(
                 authorize(anyRequest, authenticated)
             }
             addFilterBefore<UsernamePasswordAuthenticationFilter>(customLoginAuthenticationFilter())
-            addFilterBefore<UsernamePasswordAuthenticationFilter>(jwtTokenAuthenticationFilter())
+            oauth2ResourceServer {
+                jwt {  }
+            }
         }
         return http.build()
     }
@@ -43,10 +42,6 @@ class SecurityConfig(
         val filter = CustomLoginAuthenticationFilter(AntPathRequestMatcher("/login", HttpMethod.POST.name()), tokenSigner)
         filter.setAuthenticationManager(authenticationManager)
         return filter
-    }
-
-    private fun jwtTokenAuthenticationFilter(): JwtAuthenticationFilter {
-        return JwtAuthenticationFilter(jwsVerifier)
     }
 
 }

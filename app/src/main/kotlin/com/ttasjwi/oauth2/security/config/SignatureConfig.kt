@@ -28,7 +28,7 @@ class SignatureConfig {
     fun jwkRepository(): JWKRepository {
         val jwk = RSAKeyGenerator(2048)
             .keyID("rsaKey")
-            .algorithm(JWSAlgorithm.RS256)
+            .algorithm(JWSAlgorithm.RS512)
             .generate()
         return JWKRepository(jwk)
     }
