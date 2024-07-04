@@ -135,6 +135,7 @@
 # 14장: OAuth 2.0 Resource Server - 리소스 서버 권한 구현
 
 - <a href="/note/14장 - OAuth 2.0 Resource Server - 리소스 서버 권한 구현/14.1 Scope 기반 권한 매핑 구현하기.md" target="_blank">14.1 Scope 기반 권한 매핑 구현하기</a>
+- <a href="/note/14장 - OAuth 2.0 Resource Server - 리소스 서버 권한 구현/14.2 권한 구성 커스터마이징 - JwtAuthenticationConverter.md" target="_blank">14.2 권한 구성 커스터마이징 - JwtAuthenticationConverter</a>
 
 
 ---

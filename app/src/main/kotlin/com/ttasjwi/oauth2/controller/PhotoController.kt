@@ -19,13 +19,24 @@ class PhotoController {
     }
 
     @GetMapping("/photos/2")
-    @PreAuthorize("hasAuthority('SCOPE_photo')")
+    @PreAuthorize("hasRole('photo')")
     fun photos2(): Photo {
         return Photo(
             userId="user1",
             photoId = "2",
             photoTitle = "Photo2",
             photoDescription = "이것은 photo 2 입니다",
+        )
+    }
+
+    @GetMapping("/photos/3")
+    @PreAuthorize("hasRole('default-roles-oauth2')")
+    fun photos3(): Photo {
+        return Photo(
+            userId="user1",
+            photoId = "3",
+            photoTitle = "Photo3",
+            photoDescription = "이것은 photo 3 입니다",
         )
     }
 }
