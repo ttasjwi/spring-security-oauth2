@@ -134,6 +134,9 @@
 
 # 14장: OAuth 2.0 Resource Server - 리소스 서버 권한 구현
 
+- <a href="/note/14장 - OAuth 2.0 Resource Server - 리소스 서버 권한 구현/14.1 Scope 기반 권한 매핑 구현하기.md" target="_blank">14.1 Scope 기반 권한 매핑 구현하기</a>
+
+
 ---
 
 # 15장: OAuth 2.0 Resource Server - opaque()
