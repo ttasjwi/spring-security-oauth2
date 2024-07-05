@@ -1,5 +1,6 @@
 package com.ttasjwi.oauth2.security.config
 
+import com.ttasjwi.oauth2.security.authentication.CustomOpaqueTokenIntrospector
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -30,7 +31,9 @@ class SecurityConfig {
     @Bean
     fun opaqueTokenIntrospector(properties: OAuth2ResourceServerProperties): OpaqueTokenIntrospector {
         val opaqueToken = properties.opaquetoken
-        return NimbusOpaqueTokenIntrospector(opaqueToken.introspectionUri, opaqueToken.clientId, opaqueToken.clientSecret)
+        val delegate =  NimbusOpaqueTokenIntrospector(opaqueToken.introspectionUri, opaqueToken.clientId, opaqueToken.clientSecret)
+
+        return CustomOpaqueTokenIntrospector(delegate)
     }
 
 }
