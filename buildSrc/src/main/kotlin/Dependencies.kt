@@ -19,6 +19,8 @@ object Dependencies {
     // session
     const val SPRING_SESSION_CORE = "org.springframework.session:spring-session-core:${DependencyVersions.SPRING_SESSION_CORE_VERSION}"
 
+    const val NIMBUS_OAUTH2_OIDC_SDK = "com.nimbusds:oauth2-oidc-sdk:${DependencyVersions.NIMBUS_OAUTH2_OIDC_SDK}"
+
     // logger
     const val KOTLIN_LOGGING = "io.github.oshai:kotlin-logging:${DependencyVersions.KOTLIN_LOGGING_VERSION}"
 

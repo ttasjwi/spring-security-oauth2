@@ -5,6 +5,7 @@ dependencies {
     // security
     implementation(Dependencies.SPRING_SECURITY)
     implementation(Dependencies.SPRING_OAUTH2_RESOURCE_SERVER)
+    runtimeOnly(Dependencies.NIMBUS_OAUTH2_OIDC_SDK)
 
     // thymeleaf
     implementation(Dependencies.THYMELEAF)

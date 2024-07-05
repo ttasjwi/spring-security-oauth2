@@ -142,6 +142,9 @@
 
 # 15장: OAuth 2.0 Resource Server - opaque()
 
+- <a href="/note/15장 - OAuth 2.0 Resource Server - opaque()/15.1 Opaque 개념 및 프로세스 이해.md" target="_blank">15.1 Opaque 개념 및 프로세스 이해</a>
+- <a href="/note/15장 - OAuth 2.0 Resource Server - opaque()/15.2 토큰 검사 및 프로세스 이해.md" target="_blank">15.2 토큰 검사 및 프로세스 이해</a>
+
 ---
 
 # 16장: OAuth 2.0 Client + OAuth 2.0 Resource Server 연동

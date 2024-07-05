@@ -1,9 +1,9 @@
 package com.ttasjwi.oauth2.controller
 
-import org.springframework.security.core.Authentication
+import com.ttasjwi.oauth2.controller.dto.OpaqueTokenResponse
 import org.springframework.security.core.annotation.AuthenticationPrincipal
-import org.springframework.security.oauth2.jwt.Jwt
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken
+import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal
+import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthentication
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -11,27 +11,10 @@ import org.springframework.web.bind.annotation.RestController
 class ApiController {
 
     @GetMapping("/")
-    fun index(): String = "index"
+    fun user(authentication: BearerTokenAuthentication, @AuthenticationPrincipal principal: OAuth2AuthenticatedPrincipal): OpaqueTokenResponse {
+        val attributes =  authentication.tokenAttributes as Map<String, *>
+        val active = attributes["active"] as Boolean
 
-    @GetMapping("/api/user")
-    fun user(authentication: JwtAuthenticationToken, @AuthenticationPrincipal principal: Jwt): Authentication {
-        val sub = authentication.tokenAttributes["sub"] as String
-        val email = authentication.tokenAttributes["email"] as String?
-        val scope = authentication.tokenAttributes["scope"] as String
-
-        val sub2 = principal.getClaim<String>("sub")
-        val token = principal.tokenValue
-
-
-        // 토큰을 사용해 다른 우리 서비스와 통신할 수도 있다.
-//        val restTemplate = RestTemplate()
-//        val headers = HttpHeaders()
-//        headers.add("Authorization", "Bearer $token")
-//
-//        val requestEntity = RequestEntity<String>(headers, HttpMethod.GET, URI("http://localhost:8082"))
-//        val responseEntity = restTemplate.exchange<String>(requestEntity)
-//        val body = responseEntity.body
-
-        return authentication
+        return OpaqueTokenResponse(active, principal, authentication)
     }
 }
