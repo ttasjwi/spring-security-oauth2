@@ -150,6 +150,7 @@
 # 16장: OAuth 2.0 Client + OAuth 2.0 Resource Server 연동
 
 - <a href="/note/16장 - OAuth 2.0 Client + OAuth 2.0 Resource Server 연동/16.1 프로젝트 구성.md" target="_blank">16.1 프로젝트 구성</a>
+- <a href="/note/16장 - OAuth 2.0 Client + OAuth 2.0 Resource Server 연동/16.2 OAuth2 로그인 기능 및 화면 구현.md" target="_blank">16.2 OAuth2 로그인 기능 및 화면 구현</a>
 
 
 ---
