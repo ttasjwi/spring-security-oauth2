@@ -1,11 +1,11 @@
-package com.ttasjwi.oauth2
+package com.ttasjwi.client
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class Main
+class ClientMain
 
 fun main(args: Array<String>) {
-    runApplication<Main>(*args)
+    runApplication<ClientMain>(*args)
 }

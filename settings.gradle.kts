@@ -1,5 +1,6 @@
 rootProject.name = "spring-security-oauth2"
 include(
-    "app",
+    "oauth2-client",
+    "oauth2-resource-server",
     "support:logging"
 )

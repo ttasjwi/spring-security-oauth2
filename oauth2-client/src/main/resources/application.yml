@@ -1,0 +1,19 @@
+spring.application.name: oauth2-client
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: oauth2-client-app
+            client-secret: 1tIeERcVJnWNmVZIEFA7Ao5YkTIbx83w
+            scope: openid,email,photo
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8081/login/oauth2/code/keycloak
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/oauth2
+            user-name-attribute: preferred_username
