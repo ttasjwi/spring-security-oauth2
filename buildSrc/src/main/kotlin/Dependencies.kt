@@ -16,6 +16,7 @@ object Dependencies {
     const val SPRING_SECURITY = "org.springframework.boot:spring-boot-starter-security"
     const val SPRING_OAUTH2_CLIENT = "org.springframework.boot:spring-boot-starter-oauth2-client"
     const val SPRING_OAUTH2_RESOURCE_SERVER = "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
+    const val SPRING_OAUTH2_AUTHORIZATION_SERVER = "org.springframework.boot:spring-boot-starter-oauth2-authorization-server"
     // session
     const val SPRING_SESSION_CORE = "org.springframework.session:spring-session-core:${DependencyVersions.SPRING_SESSION_CORE_VERSION}"
 

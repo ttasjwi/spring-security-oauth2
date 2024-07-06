@@ -157,6 +157,9 @@
 
 # 17장: Spring Authorization Server
 
+- <a href="/note/17장 - Spring Authorization Server/17.1 OAuth 2.0 Authorization Server 소개 및 프로젝트 구성.md" target="_blank">17.1 OAuth 2.0 Authorization Server 소개 및 프로젝트 구성</a>
+
+
 ---
 
 # 18장: Spring Authorization Server - 주요 도메인 클래스
