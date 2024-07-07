@@ -159,6 +159,7 @@
 
 - <a href="/note/17장 - Spring Authorization Server/17.1 OAuth 2.0 Authorization Server 소개 및 프로젝트 구성.md" target="_blank">17.1 OAuth 2.0 Authorization Server 소개 및 프로젝트 구성</a>
 - <a href="/note/17장 - Spring Authorization Server/17.2 OAuth 2.0 Authorization Server - 자동 구성 및 커스텀 설정.md" target="_blank">17.2 OAuth 2.0 Authorization Server - 자동 구성 및 커스텀 설정</a>
+- <a href="/note/17장 - Spring Authorization Server/17.3 초기화 과정 이해 - OAuth2AuthorizationServerConfigurer.md" target="_blank">17.3 초기화 과정 이해 - OAuth2AuthorizationServerConfigurer</a>
 
 
 ---
