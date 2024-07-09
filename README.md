@@ -161,6 +161,7 @@
 - <a href="/note/17장 - Spring Authorization Server/17.2 OAuth 2.0 Authorization Server - 자동 구성 및 커스텀 설정.md" target="_blank">17.2 OAuth 2.0 Authorization Server - 자동 구성 및 커스텀 설정</a>
 - <a href="/note/17장 - Spring Authorization Server/17.3 초기화 과정 이해 - OAuth2AuthorizationServerConfigurer.md" target="_blank">17.3 초기화 과정 이해 - OAuth2AuthorizationServerConfigurer</a>
 - <a href="/note/17장 - Spring Authorization Server/17.4 초기화 과정 이해 - AuthorizationServerContext.md" target="_blank">17.4 초기화 과정 이해 - AuthorizationServerContext</a>
+- <a href="/note/17장 - Spring Authorization Server/17.5 Spring Authorization Server - 인가서버 시작하기.md" target="_blank">17.5 Spring Authorization Server - 인가서버 시작하기</a>
 
 ---
 
