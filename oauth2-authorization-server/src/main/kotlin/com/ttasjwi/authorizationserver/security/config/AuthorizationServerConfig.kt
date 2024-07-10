@@ -22,6 +22,7 @@ import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
+import java.time.Instant
 import java.util.*
 
 @Configuration
@@ -44,22 +45,39 @@ class AuthorizationServerConfig {
      */
     @Bean
     fun registeredClientRepository(): RegisteredClientRepository {
-        val registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-            .clientId("oauth2-client-app")
-            .clientSecret("{noop}secret")
+        val registeredClient1 = createRegisteredClient("oauth2-client-app1", "{noop}secret1", "read", "write")
+        val registeredClient2 = createRegisteredClient("oauth2-client-app2", "{noop}secret2", "read", "delete")
+        val registeredClient3 = createRegisteredClient("oauth2-client-app3", "{noop}secret3", "read", "update")
+
+        return InMemoryRegisteredClientRepository(registeredClient1, registeredClient2, registeredClient3)
+    }
+
+    private fun createRegisteredClient(
+        clientId: String,
+        clientSecret: String,
+        vararg scopes: String
+    ): RegisteredClient {
+        val builder = RegisteredClient.withId(UUID.randomUUID().toString())
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .clientName(clientId)
+            .clientIdIssuedAt(Instant.now())
+            .clientSecretExpiresAt(Instant.MAX)
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
             .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
             .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
             .redirectUri("http://127.0.0.1:8081")
             .scope(OidcScopes.OPENID)
-            .scope("read")
-            .scope("write")
+            .scope(OidcScopes.PROFILE)
+            .scope(OidcScopes.EMAIL)
             .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-            .build()
 
-        return InMemoryRegisteredClientRepository(registeredClient)
+        if (scopes.isNotEmpty()) {
+            scopes.forEach { builder.scope(it) }
+        }
+        return builder.build()
     }
 
     @Bean
@@ -89,7 +107,7 @@ class AuthorizationServerConfig {
             val keyPairGenerator = KeyPairGenerator.getInstance("RSA")
             keyPairGenerator.initialize(2048)
             keyPair = keyPairGenerator.generateKeyPair()
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             log.error(e) { "인가서버 jwk 설정 실패 - RSA 키 생성 과정에서 오류가 발생했습니다." }
             throw IllegalStateException(e)
         }
