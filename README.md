@@ -178,6 +178,7 @@
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.2 tokenEndpoint() - 토큰발급 API 원리 및 설정.md" target="_blank">19.2 tokenEndpoint() - 토큰발급 API 원리 및 설정</a>
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.3 clientAuthentication() - 클라이언트 인증.md" target="_blank">19.3 clientAuthentication() - 클라이언트 인증</a>
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.4 Authorization Code Grant Type - 토큰 발급.md" target="_blank">19.4 Authorization Code Grant Type - 토큰 발급</a>
+- <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.5 Client Credentials Grant Type - 토큰 발급.md" target="_blank">19.5 Client Credentials Grant Type - 토큰 발급</a>
 
 ---
 
