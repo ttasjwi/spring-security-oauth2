@@ -1,13 +1,13 @@
 package com.ttasjwi.resourceserver.config
 
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
+import org.springframework.security.oauth2.server.resource.introspection.NimbusOpaqueTokenIntrospector
+import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector
 import org.springframework.security.web.SecurityFilterChain
-import org.springframework.web.cors.CorsConfiguration
-import org.springframework.web.cors.CorsConfigurationSource
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 class OAuth2ResourceServerConfig {
@@ -16,31 +16,19 @@ class OAuth2ResourceServerConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             authorizeHttpRequests {
-                authorize("/photos", hasAuthority("SCOPE_photo"))
                 authorize(anyRequest, authenticated)
             }
             oauth2ResourceServer {
-                jwt {}
-            }
-            cors {
-                configurationSource = corsConfigurationSource()
+                opaqueToken {  }
             }
         }
         return http.build()
     }
 
     @Bean
-    fun corsConfigurationSource(): CorsConfigurationSource {
-        val corsConfiguration = CorsConfiguration()
-        corsConfiguration.addAllowedOrigin("http://localhost:8081")
-        corsConfiguration.addAllowedMethod("*")
-        corsConfiguration.addAllowedHeader("*")
-        corsConfiguration.allowCredentials = true
-        corsConfiguration.maxAge = 3600L
-
-        val source = UrlBasedCorsConfigurationSource()
-        source.registerCorsConfiguration("/**", corsConfiguration)
-        return source
+    fun myOpaqueTokenIntrospector(properties: OAuth2ResourceServerProperties): OpaqueTokenIntrospector {
+        val opaqueToken = properties.opaquetoken!!
+        return NimbusOpaqueTokenIntrospector(opaqueToken.introspectionUri, opaqueToken.clientId!!, opaqueToken.clientSecret!!)
     }
 
 }

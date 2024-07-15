@@ -181,6 +181,7 @@
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.5 Client Credentials Grant Type - 토큰 발급.md" target="_blank">19.5 Client Credentials Grant Type - 토큰 발급</a>
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.6 Refresh Token Grant Type - 토큰 재발급.md" target="_blank">19.6 Refresh Token Grant Type - 토큰 재발급</a>
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.7 Authorization Code with PKCE.md" target="_blank">19.7 Authorization Code with PKCE</a>
+- <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.8 tokenIntrospectionEndpoint() - 토큰 검증.md" target="_blank">19.8 tokenIntrospectionEndpoint() - 토큰 검증</a>
 
 ---
 
