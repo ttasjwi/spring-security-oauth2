@@ -77,6 +77,8 @@ class AuthorizationServerConfig {
             .scope(OidcScopes.OPENID)
             .scope(OidcScopes.PROFILE)
             .scope(OidcScopes.EMAIL)
+            .scope(OidcScopes.ADDRESS)
+            .scope(OidcScopes.PHONE)
             .tokenSettings(TokenSettings.builder().reuseRefreshTokens(false).build()) // 리프레시 토큰 요청 시 리프레시 토큰도 재갱신
             .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 
@@ -86,6 +88,9 @@ class AuthorizationServerConfig {
         return builder.build()
     }
 
+    /**
+     * UserInfo 엔드포인트 접근 시 Jwt 검증이 필요한데 이를 위해 필요
+     */
     @Bean
     fun jwtDecoder(jwkSource: JWKSource<SecurityContext>): JwtDecoder {
         return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource)
