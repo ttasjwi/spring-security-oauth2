@@ -1,12 +1,9 @@
 package com.ttasjwi.resourceserver.config
 
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.invoke
-import org.springframework.security.oauth2.server.resource.introspection.NimbusOpaqueTokenIntrospector
-import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector
 import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
@@ -19,16 +16,10 @@ class OAuth2ResourceServerConfig {
                 authorize(anyRequest, authenticated)
             }
             oauth2ResourceServer {
-                opaqueToken {  }
+                jwt {  }
             }
         }
         return http.build()
-    }
-
-    @Bean
-    fun myOpaqueTokenIntrospector(properties: OAuth2ResourceServerProperties): OpaqueTokenIntrospector {
-        val opaqueToken = properties.opaquetoken!!
-        return NimbusOpaqueTokenIntrospector(opaqueToken.introspectionUri, opaqueToken.clientId!!, opaqueToken.clientSecret!!)
     }
 
 }

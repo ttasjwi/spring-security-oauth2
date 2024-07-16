@@ -6,8 +6,6 @@ dependencies {
     implementation(Dependencies.SPRING_SECURITY)
     implementation(Dependencies.SPRING_OAUTH2_RESOURCE_SERVER)
 
-    implementation(Dependencies.NIMBUS_OAUTH2_OIDC_SDK)
-
     // logging
     implementation(project(":support:logging"))
 }

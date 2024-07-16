@@ -168,7 +168,7 @@
 # 18장: Spring Authorization Server - 주요 도메인 클래스
 
 - <a href="/note/18장 - Spring Authorization Server - 주요 도메인 클래스/18.1 RegisteredClientRepository & RegisteredClient 이해 및 활용.md" target="_blank">18.1 RegisteredClientRepository & RegisteredClient 이해 및 활용</a>
-- <a href="/note/18장 - Spring Authorization Server - 주요 도메인 클래스/18.2 OAuth2AuthorizationService & OAuth2Authorization 이해 및 활용.md" target="_blank">18.1 RegisteredClientRepository & RegisteredClient 이해 및 활용</a>
+- <a href="/note/18장 - Spring Authorization Server - 주요 도메인 클래스/18.2 OAuth2AuthorizationService & OAuth2Authorization 이해 및 활용.md" target="_blank">18.2 OAuth2AuthorizationService & OAuth2Authorization 이해 및 활용</a>
 
 ---
 
@@ -183,6 +183,7 @@
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.7 Authorization Code with PKCE.md" target="_blank">19.7 Authorization Code with PKCE</a>
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.8 tokenIntrospectionEndpoint() - 토큰 검증.md" target="_blank">19.8 tokenIntrospectionEndpoint() - 토큰 검증</a>
 - <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.9 tokenRevocationEndpoint() - 토큰 취소.md" target="_blank">19.9 tokenRevocationEndpoint() - 토큰 취소</a>
+- <a href="/note/19장 - Spring Authorization Server - 엔드포인트 프로토콜/19.10 인가서버 메타데이터 & JWKSet 엔드포인트.md" target="_blank">19.10 인가서버 메타데이터 & JWKSet 엔드포인트</a>
 
 ---
 
