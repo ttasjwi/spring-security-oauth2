@@ -27,6 +27,7 @@ import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
+import java.time.Duration
 import java.time.Instant
 import java.util.*
 
@@ -50,7 +51,7 @@ class AuthorizationServerConfig {
      */
     @Bean
     fun registeredClientRepository(): RegisteredClientRepository {
-        val registeredClient1 = createRegisteredClient("oauth2-client-app1", "{noop}secret1", "read", "write")
+        val registeredClient1 = createRegisteredClient("oauth2-client-app1", "{noop}secret1", "read", "write", "photo", "friend")
         val registeredClient2 = createRegisteredClient("oauth2-client-app2", "{noop}secret2", "read", "delete")
         val registeredClient3 = createRegisteredClient("oauth2-client-app3", "{noop}secret3", "read", "update")
 
@@ -74,12 +75,11 @@ class AuthorizationServerConfig {
             .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
             .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
             .redirectUri("http://127.0.0.1:8081")
+            .redirectUri("http://127.0.0.1:8081/login/oauth2/code/springoauth2")
             .scope(OidcScopes.OPENID)
             .scope(OidcScopes.PROFILE)
             .scope(OidcScopes.EMAIL)
-            .scope(OidcScopes.ADDRESS)
-            .scope(OidcScopes.PHONE)
-            .tokenSettings(TokenSettings.builder().reuseRefreshTokens(false).build()) // 리프레시 토큰 요청 시 리프레시 토큰도 재갱신
+            .tokenSettings(TokenSettings.builder().accessTokenTimeToLive(Duration.ofSeconds(1L)).build()) // 리프레시 토큰 요청 시 리프레시 토큰도 재갱신
             .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 
         if (scopes.isNotEmpty()) {

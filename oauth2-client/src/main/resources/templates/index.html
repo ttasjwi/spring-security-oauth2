@@ -3,28 +3,25 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
     <script>
-        function token(){
+        const token = () => {
             fetch("/token")
-                .then(response => {
-                    response.json().then(function(data){
-                        console.log("text 안에 데이터 = " + data.tokenValue);
-                        window.localStorage.setItem("access_token", data.tokenValue);
-                        location.href = "/home";
-                    })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("access token = " + data.tokenValue);
+                    window.localStorage.setItem("access_token", data.tokenValue);
+                    location.href = "/home";
                 })
         }
     </script>
 </head>
 <body>
 <div>OAuth2.0 Client</div>
-<div sec:authorize="isAnonymous()"><a th:href="@{/oauth2/authorization/keycloak}">Login</a></div>
+<div sec:authorize="isAnonymous()"><a th:href="@{/oauth2/authorization/springoauth2}">Login</a></div>
 <div sec:authorize="isAuthenticated()">
-<form action="#">
-    <p><input type="button" onclick="token()" value="access token" />
-</form>
+    <button type="button" th:onclick="token()">access token</button>
 </div>
 </body>
 </html>
